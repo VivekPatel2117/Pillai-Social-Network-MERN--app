@@ -1,0 +1,73 @@
+#sports{
+    background-image: url('./sports.avif');
+}
+#academic{
+    background-image: url('./academic.jpg');
+}
+#association{
+    background-image: url('./association.png');
+}
+#performer{
+    background-image: url('./performer.webp');
+}
+.event-container{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin-top: 10rem;
+    /* background-color: #ecf0f1; Optional background color for the body */
+}
+
+.container-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.container-all {
+    width: 200px;
+    height: 100px;
+    background-color: #3498db;
+    margin: 10px;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    font-size: 18px;
+}
+
+.centered-container {
+    /* text-align: center; */
+    margin-top: 20px;
+    /* width: 300px; */
+    /* height: 200px; */
+    /* background-color: #e74c3c;
+    color: #fff;
+    line-height: 200px;
+    font-size: 24px; */
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 45%; /* Two containers per row on smaller screens */
+    }
+    .event-container{
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        margin-top: 10rem;
+        /* background-color: #ecf0f1; Optional background color for the body */
+    }
+}

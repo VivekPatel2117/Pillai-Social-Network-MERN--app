@@ -7,8 +7,7 @@ const USER=mongoose.model("USER");
 const NOTICE =mongoose.model("NOTICE");
 const AWARD=mongoose.model("AWARD");
 const app=express();
-const cors=require('cors')
-app.use(cors())
+
 
 
 

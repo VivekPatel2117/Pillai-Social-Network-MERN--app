@@ -26,8 +26,6 @@ export default function Admin() {
   console.log(mail);
 
     if (!emailRegex.test(Email)) {
-      // const emailValue = Email.trim(); // Trim to remove leading/trailing spaces
-      // const passwordValue = Password.trim();
       notifyD("Only Faculty email")
       return
     } else if (!passRegex.test(Password)) {

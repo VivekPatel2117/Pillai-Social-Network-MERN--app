@@ -14,7 +14,8 @@ export default function Admin() {
   const notifyD = (msg) => toast.error(msg)
   
   const navigate = useNavigate()
-  const emailRegex =/^[a-zA-Z]@mes\.ac\.in$/;'
+  const emailRegex =/^[a-zA-Z]@mes\.ac\.in$/;
+  
 
 
   const passRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/

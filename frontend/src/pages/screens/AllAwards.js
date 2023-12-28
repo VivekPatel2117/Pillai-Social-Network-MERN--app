@@ -10,7 +10,7 @@ export default function AllAwards() {
     const token = storedData.token;
     // const [data, setdata] = useState([])
     var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png"
-    const notifyA = (msg) => toast.error(msg);
+   
     
     const notifyB = (msg) => toast.success(msg)
     // console.log(localStorage.getItem("user"));
@@ -19,8 +19,7 @@ export default function AllAwards() {
     const [comment, setComment] = useState("");
     const [show, setShow] = useState(false);
     const [item, setItem] = useState([]);
-    let limit = 10
-    let skip = 0
+  
   useEffect(() => {
     const token=localStorage.getItem('jwt');
     if (!token) {
@@ -28,10 +27,7 @@ export default function AllAwards() {
     }
     fetchPosts()
   
-  // window.addEventListener("scroll",handleScroll)
-  // return ()=>{
-  //   window.removeEventListener("scroll",handleScroll)
-  // }
+
       
     }, []);
     const fetchPosts = ()=>{
@@ -49,13 +45,6 @@ export default function AllAwards() {
         .catch((err) => console.log(err));
     }
   
-    // const handleScroll = ()=>{
-    //   if(document.documentElement.clientHeight + window.pageYOffset >= document.documentElement.scrollHeight){
-    //     skip = skip + 10
-    //     fetchPosts()
-    //   }
-    // }
-  
   const likePost=(id)=>{
     fetch("/likeAward", {
       method: "put",
@@ -70,7 +59,7 @@ export default function AllAwards() {
       .then((res) => res.json())
       .then((result) => {
         const newData = data.map((posts) => {
-          if (posts._id == result._id) {
+          if (posts._id === result._id) {
             return result;
           } else {
             return posts;
@@ -94,7 +83,7 @@ export default function AllAwards() {
       .then((res) => res.json())
       .then((result) => {
         const newData = data.map((posts) => {
-          if (posts._id == result._id) {
+          if (posts._id === result._id) {
             return result;
           } else {
             return posts;
@@ -129,7 +118,7 @@ export default function AllAwards() {
       .then((res) => res.json())
       .then((result) => {
         const newData = data.map((posts) => {
-          if (posts._id == result._id) {
+          if (posts._id === result._id) {
             return result;
           } else {
             return posts;
@@ -163,23 +152,14 @@ export default function AllAwards() {
       ]
     }
   }
-// useEffect(() => {
-//   // Fetching post
-//   fetch("http://localhost:5000/AwardsAllPosts",{
-//     headers: {
-//       "authorization": "Bearer " + token
-//     },
-//   }).then(res=>res.json())
-//   .then(result=> setdata(result))
-//   .catch(err=>console.log(err))
-// }, [])
+
 
   return (
     <>
       {loginStatus()}
       <div className="Home">
     {data.map((posts)=>{
-     
+     console.log(posts.postedBy.Photo ? posts.postedBy.Photo : picLink)
       return(
         <div className='home-card'>
         <div className="home-card-header">
@@ -269,9 +249,6 @@ export default function AllAwards() {
             <div className="postPic">
               <img src={item.photo} alt="" />
             </div>
-            <div className="caption-all">
-            <p>{item.body}</p>
-            </div>
             <div className="details">
               {/* card header */}
               <div
@@ -281,7 +258,7 @@ export default function AllAwards() {
                 <div className="home-card-pic">
                   <img
                   id='user-img-home'
-                    src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    src={item.postedBy.Photo}
                     alt=""
                   />
                 </div>
@@ -311,6 +288,7 @@ export default function AllAwards() {
               {/* card content */}
               <div className="home-card-content">
                 <p>{item.likes.length} Likes</p>
+                <p>{item.body}</p>
               </div>
 
               {/* add Comment */}
@@ -349,7 +327,7 @@ export default function AllAwards() {
         </div>
       )}
       </div>
-
+<ToastContainer/>
     </>
 
   )

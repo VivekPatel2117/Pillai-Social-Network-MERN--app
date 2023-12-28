@@ -2,7 +2,7 @@ import React, { useState,useEffect } from 'react';
 import Navbar from './Navbar';
 import '../CSS/Notice.css';
 import { toast,ToastContainer } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import AllNotice from './screens/AllNotice';
 export default function Notice() {
   const [imageSrc, setImageSrc] = useState('');
@@ -12,7 +12,7 @@ export default function Notice() {
   const [body, setBody] = useState("");
   const [image, setImage] = useState("")
   const [url, setUrl] = useState("")
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   // Toast functions
   const notifyA = (msg) => toast.error(msg)

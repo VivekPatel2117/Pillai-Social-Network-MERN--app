@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../CSS/createPost.css";
 import { toast,ToastContainer } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
+import Profile from '../img/profile.webp';
 
 export default function Createpost() {
   const token = localStorage.getItem('jwt');
@@ -81,8 +82,8 @@ export default function Createpost() {
   }, [url])
 const UserName=JSON.parse(localStorage.getItem('user'))
 // console.log(UserName.UserName);
-const profile=localStorage.getItem('profile-pic')
-console.log(profile)
+
+
   return (
     <div className="createPost">
       {/* //header */}
@@ -110,7 +111,7 @@ console.log(profile)
         <div className="card-header">
           <div className="card-pic">
             <img id="user-img"
-              src={profile}
+              src={Profile}
               alt="user"
             />
           </div>

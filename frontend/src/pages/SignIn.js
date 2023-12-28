@@ -5,6 +5,8 @@ import Logo from '../img/logo.jpeg';
 import {toast,ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { LoginContext } from '../context/LoginContext';
+import { GoogleLogin } from '@react-oauth/google';
+import {jwtDecode} from 'jwt-decode';
 export default function SignIn() {
   const notifyA = (msg) => toast.error(msg)
   const notifyB = (msg) => toast.success(msg)
@@ -58,7 +60,40 @@ export default function SignIn() {
       })
   }
 
-    
+  const continueWithGoogle =(credentialResponse)=>{
+    console.log(credentialResponse);
+    const jwtDetail = jwtDecode(credentialResponse.credential)
+    console.log(jwtDetail)
+    fetch("/googleLogin",{
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: jwtDetail.name,
+        userName: jwtDetail,
+        email:jwtDetail.email,
+        email_verified:jwtDetail.email_verified,
+        clientId:credentialResponse.clientId,
+        Photo:jwtDetail.picture
+
+      })
+    }).then(res => res.json())
+      .then(data => {
+        if (data.error) {
+          notifyA(data.error)
+        } else {
+          notifyB("Signed In Successfully")
+          console.log(data)
+          localStorage.setItem("jwt", data.token)
+          localStorage.setItem("user", JSON.stringify(data.user))
+          setUserLogin(true)
+          navigate("/Home")
+        }
+        console.log(data)
+      })
+  }
+   
   
   useEffect(() => {
     document.getElementById('login-SignIn-form').addEventListener('submit', function (event) {
@@ -97,6 +132,14 @@ export default function SignIn() {
             </div>
             <button type="submit" id="login-btn" onClick={()=>{verify()}}>Login</button>
             <p className="forgot-password"><Link to="Forgot">Forgot Password?</Link></p>
+            <GoogleLogin
+            onSuccess={credentialResponse => {
+             continueWithGoogle(credentialResponse)
+            }}
+            onError={() => {
+              console.log('Login Failed');
+            }}
+          />
           </form>
           <p className="create-account">Don't have an account?<button onClick={showPopup}>Create One</button></p>
         </div>
@@ -110,6 +153,7 @@ export default function SignIn() {
             </div>
           </div>
         </div>
+       
       </body>
       <ToastContainer/>
     </>

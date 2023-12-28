@@ -113,37 +113,44 @@ router.post("/SignIn",(req,res)=>{
     })
        
         
-    
-//      else {
-     
-//      ADMIN.findOne({Email:email}).then((savedUser)=>{
-//         if(!savedUser){
-//             return res.status(422).json({error:"Email Does Not Registered"})
-//         }
-//         console.log(savedUser);
-//        bcrypt.compare(Password,savedUser.Password).then((match)=>{
-//            if(match){
-//                // console.log(match);
-//             //    return res.status(200).json({message:"Signed In sucessfully"})
-//             const token=jwt.sign({_id:savedUser.id},Jwt_secret)
-//             const { _id,Email} = savedUser
-//             res.json({ token, user: { _id,Email} })
-
-//             console.log({ token, user: { _id, Email } })
-//             // console.log(token);
-//             // res.json(token)
-              
-//            }else{
-//                return res.status(422).json({error:"Invalid password"})
-//            }
-//        })
-//        .catch(err=>console.log(err))
-
-//      })
-// }
-   
  
+})
 
+router.post("/googleLogin", (req, res) => {
+    const { email_verified, email,clientId, UserName, Photo } = req.body
+    if (email_verified) {
+        USER.findOne({ Email: email }).then((savedUser) => {
+            if (savedUser) {
+                const token = jwt.sign({ _id: savedUser.id }, Jwt_secret)
+                const { _id,Email, UserName } = savedUser
+                res.json({ token, user: { _id, Email, UserName } })
+                console.log({ token, user: { _id,Email, UserName } })
+            } else {
+                const password = email + clientId
+                const user = new USER({
+                    
+                    Email,
+                    UserName,
+                    Password: password,
+                    Photo
+                })
+
+                user.save()
+                    .then(user => {
+                        let userId = user._id.toString()
+                        const token = jwt.sign({ _id: userId }, Jwt_secret)
+                        const { _id, name, email, userName } = user
+
+                        res.json({ token, user: { _id, name, email, userName } })
+
+                        console.log({ token, user: { _id, name, email, userName } })
+                    })
+                    .catch(err => { console.log(err) })
+
+            }
+
+        })
+    }
 })
 
 module.exports=router;

@@ -1,56 +1,3 @@
-// import React,{useEffect,useState} from 'react'
-// import Navbar from './Navbar'
-// import '../CSS/Profile.css';
-// import profile from '../img/profile.webp';
-// import Logo from '../img/logo.jpeg';
-// import PostDetails from './PostDetails';
-// export default function Profile() {
-//   const [pic, setpic] = useState([])
-//   useEffect(() => {
-
-  
-//     return () => {
-//       fetch("http://localhost:5000/myposts",{
-//         headers: {
-//           "authorization": "Bearer " + localStorage.getItem('jwt')
-//         },
-//       }).then(res=>res.json())
-//       .then(result=> setpic(result))
-//       .catch(err=>console.log(err))
-//     }
-//   }, [])
-//  const name=JSON.parse(localStorage.getItem('user'));
-//   return (
-//    <>
-//    <Navbar/>
-//    <div className="cover"></div>
-//   <div className="profile-container">
-//     <div className="profile-picture"></div>
-//     <div className="user-info">
-//       <h2>{name.UserName}</h2>
-     
-//       {/* <!-- Add more information as needed --> */}
-//     </div>
-//   </div>
-//   {/* <!--Image Grid--> */}
-//   {/* <!--Start--> */}
-//   <div className="image-grid">
-
-//     {pic.map((pics)=>{
-//       //  const username=posts.postedBy?.UserName||posts.postedByAdmins?.Email;
-//      return  <img key={pic.id} src={pics.photo} alt="user"/>
-//     })}
-    
-  
-
-   
-//   </div>
-//   <PostDetails/>
-//    </>
-//   )
-// }
-
-
 import React, { useEffect, useState } from "react";
 import PostDetails from "../pages/PostDetails";
 import "../CSS/Profile.css";
@@ -72,6 +19,7 @@ export default function Profie() {
     } else {
       setShow(true);
       setPosts(posts);
+
     }
   };
 
@@ -82,7 +30,6 @@ export default function Profie() {
       setChangePic(true)
     }
   }
-
 
   useEffect(() => {
     fetch(`/user/${JSON.parse(localStorage.getItem("user"))._id}`, {
@@ -144,7 +91,7 @@ export default function Profie() {
         })}
       </div>
       {show &&
-        <PostDetails item={posts} toggleDetails={toggleDetails} />
+        <PostDetails item={posts} user={user} toggleDetails={toggleDetails} />
       }
       {
         changePic &&

@@ -54,4 +54,12 @@
     top: 10px;
     right: 10px;
   }
-  
+  .card-pic img{
+    height: 35px;
+    width: 35px;
+    margin: 20%;
+    border-radius: 50%;
+  }
+  #post-username{
+    margin: 3%;
+  }

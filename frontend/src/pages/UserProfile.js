@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import PostDetails from "./PostDetails";
+// import PostDetails from "./PostDetails";
 import "../CSS/Profile.css";
 import { useParams } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -131,6 +131,7 @@ export default function UserProfie() {
               // onClick={() => {
               //     toggleDetails(pics)
               // }}
+              alt="photos_users"
               className="item"
             ></img>
           );

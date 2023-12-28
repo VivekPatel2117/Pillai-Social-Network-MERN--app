@@ -5,6 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 import {toast,ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function Admin() {
+  // const form=document.getElementById('registrationForm');
+  // form.addEventListener('submit',(e)=>{
+  //   e.preventDefault();
+  // })
   const [UserName, setUserName] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
@@ -51,33 +55,33 @@ export default function Admin() {
           notifyA(data.error)
         } else {
           notifyB(data.message)
-          navigate("/Home")
+          navigate("/")
         }
         console.log(data)
       })
   }
 
 
-//   useEffect(() => {
-//   document.getElementById('registrationForm').addEventListener('submit',
-//   function (event) {
-//       event.preventDefault(); // Prevent the default form submission
+  useEffect(() => {
+  document.getElementById('registrationForm').addEventListener('submit',
+  function (event) {
+      event.preventDefault(); // Prevent the default form submission
      
-//       const email = document.getElementById('email').value;
-//       const password = document.getElementById('password').value;
-//       const confirmPassword =
-//           document.getElementById('confirmPassword').value;
-//       console.log(email);
-//       if (password !== confirmPassword) {
-//           notifyC("Password Does Not Match");
-//           return;
-//       }
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const confirmPassword =
+          document.getElementById('confirmPassword').value;
+      console.log(email);
+      if (password !== confirmPassword) {
+          notifyC("Password Does Not Match");
+          return;
+      }
       
-//       // window.location.href = 'profile.html';
-//       // Here you can add code to send the form data to your server or perform other actions
-//   });
+      // window.location.href = 'profile.html';
+      // Here you can add code to send the form data to your server or perform other actions
+  });
 
-// }, []);
+}, []);
   return (
 
    <>

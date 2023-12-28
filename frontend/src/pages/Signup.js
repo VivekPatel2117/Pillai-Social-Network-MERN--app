@@ -1,4 +1,4 @@
-import React, { useEffect ,useState} from 'react';
+import React, { useEffect} from 'react';
 import '../CSS/Signup.css';
 import { Link } from 'react-router-dom';
 import Logo from '../img/logo.jpeg';

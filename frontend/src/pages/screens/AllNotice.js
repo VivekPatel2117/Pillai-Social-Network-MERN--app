@@ -50,7 +50,7 @@ useEffect(() => {
         <div className='home-card'>
         <div className="home-card-header">
           <div className='home-card-pic'>
-            <img src="https://w7.pngwing.com/pngs/178/595/png-transparent-user-profile-computer-icons-login-user-avatars-thumbnail.png"
+            <img src={posts.postedBy.Photo}
               alt=""/>
             <h5 className='userName'>{posts.postedBy.UserName}</h5>
           

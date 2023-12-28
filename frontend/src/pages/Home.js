@@ -22,6 +22,7 @@ useEffect(() => {
   if (!token) {
     navigate('./SignIn')
   }
+
   fetchPosts()
 
 window.addEventListener("scroll",handleScroll)
@@ -51,7 +52,8 @@ return ()=>{
       fetchPosts()
     }
   }
-
+ 
+  
 const likePost=(id)=>{
   fetch("/like", {
     method: "put",
@@ -145,7 +147,7 @@ const makeComment = (text, id) => {
     <Navbar/>
     <div className="Home">
     {data.map((posts)=>{
-     
+     console.log(posts.postedBy.Photo ? posts.postedBy.Photo : picLink)
       return(
         <div className='home-card'>
         <div className="home-card-header">
@@ -244,7 +246,7 @@ const makeComment = (text, id) => {
                 <div className="home-card-pic">
                   <img
                   id='user-img-home'
-                    src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGVyc29ufGVufDB8MnwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                    src={item.postedBy.Photo}
                     alt=""
                   />
                 </div>

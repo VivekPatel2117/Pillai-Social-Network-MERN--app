@@ -7,6 +7,14 @@
   display: flex;
   justify-content: space-evenly;
 }
+@media (max-width: 800px) {
+  
+.profile-frame {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 8rem;
+}
+}
 
 .profile-pic {
   height: fit-content;

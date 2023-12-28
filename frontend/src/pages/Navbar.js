@@ -16,6 +16,7 @@ function Navbar() {
   // navbar Sidebar 
                     //Start.
                     useEffect(() => {
+                      
                       const body = document.querySelector("body");
                       const darkLight = document.querySelector("#darkLight");
                       const sidebar = document.querySelector(".sidebar");
@@ -166,7 +167,7 @@ return (
               <i className="bi bi-grid"></i>
               <i className='bx bx-sun' id="darkLight"></i>
               <i className='bx bx-bell'></i>
-             <Link to='/Profile'><img src={localStorage.getItem('profile-pic')} alt="" className="profile logo" /></Link> 
+             <Link to='/Profile'><img src={Profile} alt="" className="profile logo" /></Link> 
           </div>
 </nav>
 
@@ -224,14 +225,14 @@ return (
                                 <span className="navlink">Award</span>
                             </Link>
                         </li>
-                        <li className="item">
+                        {/* <li className="item">
                             <Link to="/Setting" className="nav_link">
                                 <span className="navlink_icon">
                                     <i className="bx bx-cog"></i>
                                 </span>
                                 <span className="navlink">Setting</span>
                             </Link>
-                        </li>
+                        </li> */}
                         <li className="item">
                             <Link to='/MyFollowingPost' className="nav_link">
                                 <span className="navlink_icon">

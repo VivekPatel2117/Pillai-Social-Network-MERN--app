@@ -1,24 +1,3 @@
-/* .login_dailog{
-    /* background-color: black; */
-    /* color: white; */
-    /* box-sizing: border-box;
-    border: 5px blacks solid;
-} */
-/* #head{
-   padding: auto;
-}
-.continue{
-    margin: 20px;
-} */ 
-/* .home-card-header{
-    margin-top: -15rem;
-/* } */
-/* @media screen and (max-width: 800px) {
-    
-.home-card-header{
-    margin-top: 0rem;
-}
-}  */
 
 .home{
     position: absolute;
@@ -134,10 +113,11 @@ padding: 10px;
   }
 
 .postPic{
-    background-color: black;
+    background-color: white;
     display: flex;
     align-items: center;
     margin-top: 2%;
+    width: 80%;
 }
 
 .postPic img{

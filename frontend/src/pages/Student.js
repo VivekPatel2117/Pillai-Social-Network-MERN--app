@@ -1,7 +1,7 @@
 import React,{useEffect,useState} from 'react'
 import Logo from '../img/logo.jpeg';
 import '../CSS/Student.css';
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {toast,ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function Student() {
@@ -63,8 +63,6 @@ export default function Student() {
   document.getElementById('registrationForm').addEventListener('submit',
   function (event) {
       event.preventDefault(); // Prevent the default form submission
-      const username = document.getElementById('username').value;
-      const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
       const confirmPassword =
           document.getElementById('confirmPassword').value;

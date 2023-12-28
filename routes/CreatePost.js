@@ -32,15 +32,13 @@ router.post("/CreatePost",requiredLogin,(req,res)=>{
 })
 router.get("/allposts",(req,res)=>{
     POST.find()
-    .populate("postedBy","_id UserName")
+    .populate("postedBy","_id UserName Photo")
     .sort("-createdAt")
     .then(posts=>res.json(posts))
     .catch(err=>console.log(err))
+    
+
 })
-
-
-
-
 
 router.put("/like", requiredLogin, async (req, res) => {
     try {
@@ -174,9 +172,6 @@ router.put("/commentAward", requiredLogin, async (req, res) => {
 });
 
 
-
-
-
 router.post("/award",requiredLogin,(req,res)=>{
   const { body, pic, category} = req.body;
   console.log(body+"  "+pic+"  "+category);
@@ -187,7 +182,7 @@ router.post("/award",requiredLogin,(req,res)=>{
        console.log(req.user);
        USER.findById(req.user._id).then((adminData) => {
       if (adminData) {
-        const emailRegex =/^[a-zA-Z]{1,20}[0-9]{2}[a-zA-Z]{2,5}@mes\.ac\.in$/;
+        const emailRegex =/^[a-zA-Z]{1,20}@mes\.ac\.in$/;
           const AdminEmail=adminData.Email;
           console.log("Email:", adminData.Email);
           console.log("Regex Test:", emailRegex.test(adminData.Email));
@@ -224,14 +219,14 @@ router.post("/award",requiredLogin,(req,res)=>{
 
 router.get("/AwardsAllPosts",(req,res)=>{
     AWARD.find()
-    .populate("postedBy","_id UserName")
+    .populate("postedBy","_id UserName Photo")
     .sort("-createdAt")
     .then(posts=>res.json(posts))
     .catch(err=>console.log(err))
 })
 router.get("/categoryAcademic",(req,res)=>{
   AWARD.find({ category: 'Academic' })
-  .populate("postedBy","_id UserName")
+  .populate("postedBy","_id UserName Photo")
   .sort("-createdAt")
   .then(posts=>res.json(posts))
   .catch(err=>console.log(err))
@@ -239,7 +234,7 @@ router.get("/categoryAcademic",(req,res)=>{
 
 router.get("/categoryAssociation",(req,res)=>{
   AWARD.find({ category: 'Association' })
-  .populate("postedBy","_id UserName")
+  .populate("postedBy","_id UserName Photo")
   .sort("-createdAt")
   .then(posts=>res.json(posts))
   .catch(err=>console.log(err))
@@ -247,7 +242,7 @@ router.get("/categoryAssociation",(req,res)=>{
 
 router.get("/categorysports",(req,res)=>{
   AWARD.find({ category: 'Sports' })
-  .populate("postedBy","_id UserName")
+  .populate("postedBy","_id UserName Photo")
   .sort("-createdAt")
   .then(posts=>res.json(posts))
   .catch(err=>console.log(err))
@@ -255,14 +250,14 @@ router.get("/categorysports",(req,res)=>{
 
 router.get("/categoryPerformingArts",(req,res)=>{
   AWARD.find({ category: 'PerformingArts' })
-  .populate("postedBy","_id UserName")
+  .populate("postedBy","_id UserName Photo")
   .sort("-createdAt")
   .then(posts=>res.json(posts))
   .catch(err=>console.log(err))
 })
 router.get("/myposts",requiredLogin,(req,res)=>{
     POST.find({postedBy:req.user._id})
-    .populate("postedBy","_id UserName")
+    .populate("postedBy","_id UserName Photo")
     .sort("-createdAt")
     .then(myposts=>{
         res.json(myposts)
@@ -293,8 +288,8 @@ router.delete("/deletePost/:postId", requiredLogin, async (req, res) => {
 
 router.get("/myfollwingpost", requiredLogin, (req, res) => {
     POST.find({ postedBy: { $in: req.user.following } })
-        .populate("postedBy", "_id UserName")
-        .populate("comments.postedBy", "_id UserName")
+        .populate("postedBy", "_id UserName Photo")
+        .populate("comments.postedBy", "_id UserName Photo")
         .sort("-createdAt")
         .then(posts => {
             res.json(posts)
@@ -313,7 +308,7 @@ router.post("/Notice",requiredLogin,(req,res)=>{
        const user=req.user;
        USER.findById(user._id).then((adminData) => {
       if (adminData) {
-        const emailRegex =/^[a-zA-Z]{1,20}[0-9]{2}[a-zA-Z]{2,5}@mes\.ac\.in$/;
+        const emailRegex =/^[a-zA-Z]{1,20}@mes\.ac\.in$/;
           console.log(adminData.Email);
 
       if(!emailRegex.test(adminData.Email)){
@@ -342,7 +337,7 @@ router.post("/Notice",requiredLogin,(req,res)=>{
 
 router.get("/NoticeAllPosts",(req,res)=>{
   NOTICE.find()
-  .populate("postedBy","_id UserName")
+  .populate("postedBy","_id UserName Photo")
   .sort("-createdAt")
   .then(posts=>res.json(posts))
   .catch(err=>console.log(err))

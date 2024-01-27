@@ -7,8 +7,10 @@ import AllNotice from './screens/AllNotice';
 export default function Notice() {
   const [imageSrc, setImageSrc] = useState('');
   const [category, setcategory] = useState('');
-  const storedDataString = localStorage.getItem('token');
-  const storedData = JSON.parse(storedDataString);
+  const storedDataString = localStorage.getItem('jwt');
+
+  const storedData = storedDataString;
+  // JSON.parse(storedDataString);
   const [body, setBody] = useState("");
   const [image, setImage] = useState("")
   const [url, setUrl] = useState("")
@@ -70,7 +72,7 @@ export default function Notice() {
           method: "post",
           headers: {
             "Content-Type": "application/json",
-            "authorization": "Bearer " + storedData.token
+            "authorization": "Bearer " + storedData
           },
           body: JSON.stringify({
             body,

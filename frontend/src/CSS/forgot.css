@@ -1,0 +1,18 @@
+form{
+    background-color: white;
+    border-radius: 10px;
+
+}
+.login-btn{
+    border: none;
+    border-radius: 4%;
+    background-color: blue;
+    color: white;
+    padding: 2%;
+    margin: 5%;
+    width: calc(60%-18px);
+}
+p{
+    font-size: larger;
+    margin: 5%;
+}

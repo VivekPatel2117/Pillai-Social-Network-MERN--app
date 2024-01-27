@@ -52,7 +52,8 @@ export default function Student() {
           notifyA(data.error)
         } else {
           notifyB(data.message)
-          navigate("/")
+
+          navigate("/OtpVerify")
         }
         console.log(data)
       })

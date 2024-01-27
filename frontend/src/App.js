@@ -7,6 +7,9 @@ import {
 } from "react-router-dom";
 import React,{createContext,useState} from 'react';
 import { LoginContext } from './context/LoginContext';
+import ResetPass from './pages/ResetPass';
+import Forgot from './pages/Forgot';
+import OtpVerify from './pages/OtpVerify';
 import Admin from './pages/Admin';
 import Award from './pages/Award';
 import Features from './pages/Features';
@@ -56,6 +59,8 @@ function App() {
       <Route path='/Events/Academic' element={<Academic/>} />
       <Route path='/Events/Association' element={<Association/>} />
       <Route path='/Events/PerfominArts' element={<PerforminArts/>} />
+      <Route path='/Forgot' element={<Forgot/>}/>
+      <Route path='/ResetPass' element={<ResetPass/>} />
       <Route path="/profile/:userid" element={<UserProfie />}></Route>
       <Route path="/MyFollowingPost" element={<MyFolliwngPost />}></Route>
       

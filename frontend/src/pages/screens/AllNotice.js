@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import '../screens/AllNotice.css';
 
 export default function AllNotice() {
-  const storedDataString = localStorage.getItem('token');
-    const storedData = JSON.parse(storedDataString);
-    const token = storedData.token;
+  const storedDataString = localStorage.getItem('jwt');
+    // const storedData = JSON.parse(storedDataString);
+    const token = storedDataString;
     const [data, setdata] = useState([])
   const loginStatus = () => {
     

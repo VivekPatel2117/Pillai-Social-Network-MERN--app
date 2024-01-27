@@ -6,9 +6,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../Navbar';
 export default function Sports() {
-  const storedDataString = localStorage.getItem('token');
-    const storedData = JSON.parse(storedDataString);
-    const token = storedData.token;
+  const storedDataString = localStorage.getItem('jwt');
+    // const storedData = JSON.parse(storedDataString);
+    const token = storedDataString;
     // const [data, setdata] = useState([])
     var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png"
     const notifyA = (msg) => toast.error(msg);

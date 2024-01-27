@@ -9,8 +9,8 @@ import AllAwards from './screens/AllAwards';
 export default function Notice() {
   const [category, setcategory] = useState('');
   const [imageSrc, setImageSrc] = useState('');
-  const storedDataString = localStorage.getItem('token');
-  const storedData = JSON.parse(storedDataString);
+  const storedDataString = localStorage.getItem('jwt');
+  const storedData = storedDataString;
   const [body, setBody] = useState("");
   const [image, setImage] = useState("")
   const [url, setUrl] = useState("")
@@ -72,7 +72,7 @@ export default function Notice() {
           method: "post",
           headers: {
             "Content-Type": "application/json",
-            "authorization": "Bearer " + storedData.token
+            "authorization": "Bearer " + storedData
           },
           body: JSON.stringify({
             body,

@@ -5,10 +5,11 @@ import {toast,ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
 export default function AllAwards() {
-  const storedDataString = localStorage.getItem('token');
-    const storedData = JSON.parse(storedDataString);
-    const token = storedData.token;
-    // const [data, setdata] = useState([])
+  const storedDataString = localStorage.getItem('jwt');
+  // console.log(storedDataString)
+  // const storedData = JSON.parse(storedDataString);
+  const token = storedDataString;
+//  const [data, setdata] = useState([])
     var picLink = "https://cdn-icons-png.flaticon.com/128/3177/3177440.png"
    
     
@@ -157,6 +158,7 @@ export default function AllAwards() {
   return (
     <>
       {loginStatus()}
+  
       <div className="Home">
     {data.map((posts)=>{
      console.log(posts.postedBy.Photo ? posts.postedBy.Photo : picLink)

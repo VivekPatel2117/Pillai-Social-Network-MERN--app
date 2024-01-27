@@ -4,11 +4,13 @@ const mongoose=require('mongoose');
 const USER=mongoose.model("USER");
 const bcrypt=require('bcrypt');
 const jwt=require('jsonwebtoken');
+const nodemailer=require('nodemailer');
 const requiredLogin = require("../middlewares/requiredLogin");
+const e = require("express");
 const Jwt_secret="rsekbyudhvakysd";
 const Studentemail =/^[a-zA-Z]{1,20}[0-9]{2}[a-zA-Z]{2,5}@student\.mes\.ac\.in$/;
 const Adminemail =/^[a-zA-Z]{1,20}[0-9]{2}[a-zA-Z]@mes\.ac\.in$/;
-
+var ResetEmail="vivekp22it@student.mes.ac.in";
 
 
 router.post("/Student",(req,res)=>{
@@ -45,7 +47,8 @@ router.post("/Student",(req,res)=>{
 
 router.post("/Admin",(req,res)=>{
     const {UserName,Email,Password}=req.body;
-
+    var otp=Math.floor(1000 + Math.random() * 9000);
+    
     if(!Email||!Password||!UserName){
         res.status(422).json({error:"PLease fill all the feilds"})
     }
@@ -61,7 +64,8 @@ router.post("/Admin",(req,res)=>{
                 Password:hasedPassword
                })
                user.save()
-               .then(user=>{res.json({message:"saved successfully"})})
+               .then(user=>{
+                res.json({message:"Check your mail box to move further"})})
                .catch(err=>{ console.log(err)})
         })
        
@@ -152,5 +156,85 @@ router.post("/googleLogin", (req, res) => {
         })
     }
 })
+router.post("/forgotPass", (req, res) => {
+    const email = req.body.email;
+
+    if (!email) {
+        return res.status(400).json({ error: "Email not provided" });
+    }
+
+    USER.findOne({ Email: email })
+        .then((savedUser) => {
+            if (!savedUser) {
+                return res.status(404).json({ error: "User not found" });
+            }
+
+            let transporter = nodemailer.createTransport({
+                host: "smtp.gmail.com",
+                port: 465,
+                secure: true,
+                auth: {
+                    user: "vivekp22it@student.mes.ac.in",
+                    pass: "yitb regd hlqn ytaa",
+                     },
+            });
+
+            transporter.sendMail({
+                from: 'Pillai Reset Password <vivekp22it@student.mes.ac.in>',
+                to: email, // Sending email to the user who requested password reset
+                subject: "Password Reset",
+                html: `
+                    <!DOCTYPE html>
+                    <html lang="en">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>Password Reset</title>
+                    </head>
+                    <body>
+                        <h2>Password Reset</h2>
+                        <p>If you are trying to reset your password, please click the link below:</p>
+                        <p><a href="http://localhost:5000/ResetPass">Reset Password</a></p>
+                    </body>
+                    </html>
+                    `,
+            });
+
+            res.status(200).json({ message: "Email sent successfully" });
+            ResetEmail=email;
+        })
+        .catch((error) => {
+            console.error(error);
+            res.status(500).json({ error: "Internal server error" });
+        });
+    });
+    router.post("/reset", (req, res) => {
+        const newPassword = req.body.pass; // Assuming pass is the new password
+        // const resetEmail = req.body.ResetEmail; // Assuming ResetEmail is the email of the user whose password is being reset
+    
+        USER.findOne({ Email: ResetEmail}).then((savedUser) => {
+            if (!savedUser) {
+                return res.status(404).json({ error: "User not found" });
+            } else {
+                bcrypt.hash(newPassword, 8).then((hashedPassword) => {
+                    savedUser.Password = hashedPassword;
+                    
+                    // Save the updated user object with the new hashed password
+                    savedUser.save().then(() => {
+                        console.log("Password updated successfully");
+                        // Optionally, send a response indicating success
+                        res.json({ message: "Password updated successfully" });
+                    }).catch((error) => {
+                        console.error("Error saving user with new password:", error);
+                        res.status(500).json({ error: "Internal server error" });
+                    });
+                }).catch((error) => {
+                    console.error("Error hashing password:", error);
+                    res.status(500).json({ error: "Internal server error" });
+                });
+            }
+        });
+    });
+    
 
 module.exports=router;

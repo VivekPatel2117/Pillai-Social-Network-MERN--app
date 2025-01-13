@@ -6,7 +6,7 @@ import {toast,ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { LoginContext } from '../context/LoginContext';
 import { GoogleLogin } from '@react-oauth/google';
-import {jwtDecode} from 'jwt-decode';
+import {  jwtDecode} from 'jwt-decode';
 export default function SignIn() {
   const notifyA = (msg) => toast.error(msg)
   const notifyB = (msg) => toast.success(msg)

@@ -20,7 +20,7 @@ export default function ResetPass() {
     const reset=()=>{
 
       if (password===Confirmpassword) {
-        fetch("/reset",{
+        fetch(`http://localhost:5000/reset`,{
             method:"POST",
             headers:{
               'Content-Type':'application/json'
@@ -34,7 +34,7 @@ export default function ResetPass() {
             notifyA(data.error);
           } else {
             notifyB(data.message);
-            navigate('/SignIn')
+            navigate('/')
           }
         });
 

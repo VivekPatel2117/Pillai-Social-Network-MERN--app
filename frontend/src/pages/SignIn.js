@@ -32,8 +32,8 @@ export default function SignIn() {
     document.getElementById('popup').style.display = 'flex';
   };
   const verify=()=>{
-
-     fetch("/SignIn", {
+    console.log(`http://localhost:5000/SignIn`)
+     fetch(`http://localhost:5000/SignIn`, {
       method: "post",
       headers: {
         "Content-Type": "application/json"
@@ -64,7 +64,7 @@ export default function SignIn() {
     console.log(credentialResponse);
     const jwtDetail = jwtDecode(credentialResponse.credential)
     console.log(jwtDetail)
-    fetch("/googleLogin",{
+    fetch(`http://localhost:5000/googleLogin`,{
       method: "post",
       headers: {
         "Content-Type": "application/json"

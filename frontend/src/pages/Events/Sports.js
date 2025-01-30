@@ -37,7 +37,7 @@ export default function Sports() {
     }, []);
     const fetchPosts = ()=>{
       // Fetching all posts
-      fetch('/categorysports', {
+      fetch(`http://localhost:5000categorysports`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
@@ -58,7 +58,7 @@ export default function Sports() {
     // }
   
   const likePost=(id)=>{
-    fetch("/likeAward", {
+    fetch(`http://localhost:5000likeAward`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -82,7 +82,7 @@ export default function Sports() {
       });
   };
   const unlikePost = (id) => {
-    fetch("/unlikeAward", {
+    fetch(`http://localhost:5000unlikeAward`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -116,7 +116,7 @@ export default function Sports() {
     }
   };
   const makeComment = (text, id) => {
-    fetch("/commentAward", {
+    fetch(`http://localhost:5000commentAward`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",

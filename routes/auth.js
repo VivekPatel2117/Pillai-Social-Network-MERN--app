@@ -2,7 +2,7 @@ const express=require("express");
 const router=express.Router();
 const mongoose=require('mongoose');
 const USER=mongoose.model("USER");
-const bcrypt=require('bcrypt');
+const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
 const nodemailer=require('nodemailer');
 const requiredLogin = require("../middlewares/requiredLogin");
@@ -194,7 +194,7 @@ router.post("/forgotPass", (req, res) => {
                     <body>
                         <h2>Password Reset</h2>
                         <p>If you are trying to reset your password, please click the link below:</p>
-                        <p><a href="http://localhost:5000/ResetPass">Reset Password</a></p>
+                        <p><a href="http://localhost:5000ResetPass">Reset Password</a></p>
                     </body>
                     </html>
                     `,
@@ -209,9 +209,8 @@ router.post("/forgotPass", (req, res) => {
         });
     });
     router.post("/reset", (req, res) => {
-        const newPassword = req.body.pass; // Assuming pass is the new password
+        const newPassword = req.body.password; // Assuming pass is the new password
         // const resetEmail = req.body.ResetEmail; // Assuming ResetEmail is the email of the user whose password is being reset
-    
         USER.findOne({ Email: ResetEmail}).then((savedUser) => {
             if (!savedUser) {
                 return res.status(404).json({ error: "User not found" });

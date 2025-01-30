@@ -33,7 +33,7 @@ return ()=>{
   }, []);
   const fetchPosts = ()=>{
     // Fetching all posts
-    fetch("/categoryAcademic", {
+    fetch(`http://localhost:5000/categoryAcademic`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -54,7 +54,7 @@ return ()=>{
   }
 
 const likePost=(id)=>{
-  fetch("/likeAward", {
+  fetch(`http://localhost:5000/likeAward`, {
     method: "put",
     headers: {
       "Content-Type": "application/json",
@@ -78,7 +78,7 @@ const likePost=(id)=>{
     });
 };
 const unlikePost = (id) => {
-  fetch("/unlikeAward", {
+  fetch(`http://localhost:5000/unlikeAward`, {
     method: "put",
     headers: {
       "Content-Type": "application/json",
@@ -112,7 +112,7 @@ const unlikePost = (id) => {
   }
 };
 const makeComment = (text, id) => {
-  fetch("/commentAward", {
+  fetch(`http://localhost:5000/commentAward`, {
     method: "put",
     headers: {
       "Content-Type": "application/json",

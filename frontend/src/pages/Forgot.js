@@ -8,7 +8,7 @@ export default function Forgot() {
   const notifyB = (msg) => toast.success(msg);
   const navigate=useNavigate();
   const forgot = () => {
-    fetch("/forgotPass", {
+    fetch(`http://localhost:5000/forgotPass`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

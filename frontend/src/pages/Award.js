@@ -68,7 +68,7 @@ export default function Notice() {
       if (url) {
     
         // console.log(storedData.token);
-        fetch("/award", {
+        fetch(`http://localhost:5000/award`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",

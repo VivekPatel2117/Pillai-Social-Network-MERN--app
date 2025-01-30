@@ -38,7 +38,7 @@ export default function Admin() {
     }
 
     // Sending data to server
-    fetch("/Admin", {
+    fetch(`http://localhost:5000/Admin`, {
       method: "post",
       headers: {
         "Content-Type": "application/json"

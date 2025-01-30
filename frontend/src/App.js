@@ -36,7 +36,6 @@ function App() {
 
   return (
 <>
-<h1>Hello World!</h1>
 <GoogleOAuthProvider clientId="424576781280-qu7p1u14597nb8d3uo421bab74bjmn0r.apps.googleusercontent.com">
 <LoginContext.Provider value={{setUserLogin}}>
 <Router>

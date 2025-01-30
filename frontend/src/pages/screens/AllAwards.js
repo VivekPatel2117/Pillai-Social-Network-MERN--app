@@ -47,7 +47,7 @@ export default function AllAwards() {
     }
   
   const likePost=(id)=>{
-    fetch("/likeAward", {
+    fetch(`http://localhost:5000likeAward`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -71,7 +71,7 @@ export default function AllAwards() {
       });
   };
   const unlikePost = (id) => {
-    fetch("/unlikeAward", {
+    fetch(`http://localhost:5000/unlikeAward`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -105,7 +105,7 @@ export default function AllAwards() {
     }
   };
   const makeComment = (text, id) => {
-    fetch("/commentAward", {
+    fetch(`http://localhost:5000/commentAward`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",

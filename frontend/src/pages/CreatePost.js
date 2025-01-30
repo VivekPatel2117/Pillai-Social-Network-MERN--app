@@ -57,7 +57,7 @@ export default function Createpost() {
     if (url) {
     
       // console.log(storedData.token);
-      fetch("/CreatePost", {
+      fetch(`http://localhost:5000/CreatePost`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

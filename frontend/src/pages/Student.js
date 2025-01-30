@@ -35,7 +35,7 @@ export default function Student() {
     }
 
     // Sending data to server
-    fetch("/Student", {
+    fetch(`http://localhost:5000/Student`, {
       method: "post",
       headers: {
         "Content-Type": "application/json"

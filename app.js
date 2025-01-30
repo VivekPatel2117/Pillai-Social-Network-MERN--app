@@ -2,6 +2,7 @@ const express=require('express');
 const app=express();
 const port=process.env.port || 5000;
 const path=require('path');
+const cors = require('cors');
 const mongoose=require('mongoose');
 require('./models/model')
 require('./models/post')
@@ -11,7 +12,9 @@ require('./models/award')
 app.use(express.json())
 app.use(require("./routes/CreatePost"))
 app.use((require("./routes/user")))
-
+app.use(cors({
+    origin: 'http://localhost:3000'  // Replace with your frontend's URL
+}));
 
 app.use(require("./routes/auth"))
 mongoose.connect("mongodb+srv://v1374:Viveksam2113@cluster0.uj4htru.mongodb.net/?retryWrites=true&w=majority")

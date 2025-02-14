@@ -35,7 +35,7 @@ export default function Student() {
     }
 
     // Sending data to server
-    fetch(`http://localhost:5000/Student`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/Student`, {
       method: "post",
       headers: {
         "Content-Type": "application/json"

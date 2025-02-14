@@ -31,8 +31,8 @@ export default function SignIn() {
     document.getElementById('popup').style.display = 'flex';
   };
   const verify=()=>{
-    console.log(`http://localhost:5000/SignIn`)
-     fetch(`http://localhost:5000/SignIn`, {
+    console.log(`${process.env.REACT_APP_BACKEND_URL}/SignIn`)
+     fetch(`${process.env.REACT_APP_BACKEND_URL}/SignIn`, {
       method: "post",
       headers: {
         "Content-Type": "application/json"
@@ -63,7 +63,7 @@ export default function SignIn() {
     console.log(credentialResponse);
     const jwtDetail = jwtDecode(credentialResponse.credential)
     console.log(jwtDetail)
-    fetch(`http://localhost:5000/googleLogin`,{
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/googleLogin`,{
       method: "post",
       headers: {
         "Content-Type": "application/json"

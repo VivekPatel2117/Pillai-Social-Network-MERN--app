@@ -68,7 +68,7 @@ export default function Notice() {
       if (url) {
     
         // console.log(storedData.token);
-        fetch(`http://localhost:5000/award`, {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/award`, {
           method: "post",
           headers: {
             "Content-Type": "application/json",

@@ -20,7 +20,7 @@ export default function ResetPass() {
     const reset=()=>{
 
       if (password===Confirmpassword) {
-        fetch(`http://localhost:5000/reset`,{
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/reset`,{
             method:"POST",
             headers:{
               'Content-Type':'application/json'

@@ -35,7 +35,7 @@ export default function Admin() {
     }
 
     // Sending data to server
-    fetch(`http://localhost:5000/Admin`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/Admin`, {
       method: "post",
       headers: {
         "Content-Type": "application/json"

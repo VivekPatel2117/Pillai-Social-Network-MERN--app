@@ -57,7 +57,7 @@ export default function Createpost() {
     if (url) {
     
       // console.log(storedData.token);
-      fetch(`http://localhost:5000/CreatePost`, {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/CreatePost`, {
         method: "post",
         headers: {
           "Content-Type": "application/json",

@@ -104,6 +104,7 @@ const unlikePost = (id) => {
 };
  // to show and hide comments
  const toggleComment = (posts) => {
+  console.log("POST",posts)
   if (show) {
     setShow(false);
   } else {
@@ -260,10 +261,10 @@ const makeComment = (text, id) => {
               >
                 {item.comments.map((comment) => {
                   return (
-                    <p className="comm">
+                    <p className="comm" style={{ color:"black" }}>
                       <span
                         className="commenter"
-                        style={{ fontWeight: "bolder" }}
+                        style={{ fontWeight: "bolder"}}
                       >
                         {comment.postedBy.UserName}{" "}
                       </span>
@@ -275,8 +276,8 @@ const makeComment = (text, id) => {
 
               {/* card content */}
               <div className="home-card-content">
-                <p>{item.likes.length} Likes</p>
-                <p>{item.body}</p>
+                <p style={{color:"black" }}>{item.likes.length} Likes</p>
+                <p style={{color:"black" }}>{item.body}</p>
               </div>
 
               {/* add Comment */}

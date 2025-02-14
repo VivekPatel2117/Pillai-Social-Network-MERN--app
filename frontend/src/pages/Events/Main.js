@@ -39,7 +39,7 @@ return ()=>{
   }, []);
   const fetchPosts = ()=>{
     // Fetching all posts
-    fetch(`http://localhost:5000/AwardsAllPosts`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/AwardsAllPosts`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
@@ -60,7 +60,7 @@ return ()=>{
   }
 
 const likePost=(id)=>{
-  fetch(`http://localhost:5000/likeAward`, {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/likeAward`, {
     method: "put",
     headers: {
       "Content-Type": "application/json",
@@ -84,7 +84,7 @@ const likePost=(id)=>{
     });
 };
 const unlikePost = (id) => {
-  fetch(`http://localhost:5000/unlikeAward`, {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/unlikeAward`, {
     method: "put",
     headers: {
       "Content-Type": "application/json",
@@ -118,7 +118,7 @@ const unlikePost = (id) => {
   }
 };
 const makeComment = (text, id) => {
-  fetch(`http://localhost:5000/commentAward`, {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/commentAward`, {
     method: "put",
     headers: {
       "Content-Type": "application/json",

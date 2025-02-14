@@ -55,7 +55,7 @@ return ()=>{
  
   
 const likePost=(id)=>{
-  fetch(`http://localhost:5000/like`, {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/like`, {
     method: "put",
     headers: {
       "Content-Type": "application/json",
@@ -79,7 +79,7 @@ const likePost=(id)=>{
     });
 };
 const unlikePost = (id) => {
-  fetch(`http://localhost:5000/unlike`, {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/unlike`, {
     method: "put",
     headers: {
       "Content-Type": "application/json",
@@ -104,6 +104,7 @@ const unlikePost = (id) => {
 };
  // to show and hide comments
  const toggleComment = (posts) => {
+  console.log("POST",posts)
   if (show) {
     setShow(false);
   } else {
@@ -113,7 +114,7 @@ const unlikePost = (id) => {
   }
 };
 const makeComment = (text, id) => {
-  fetch(`http://localhost:5000/comment`, {
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/comment`, {
     method: "put",
     headers: {
       "Content-Type": "application/json",
@@ -260,10 +261,10 @@ const makeComment = (text, id) => {
               >
                 {item.comments.map((comment) => {
                   return (
-                    <p className="comm">
+                    <p className="comm" style={{ color:"black" }}>
                       <span
                         className="commenter"
-                        style={{ fontWeight: "bolder" }}
+                        style={{ fontWeight: "bolder"}}
                       >
                         {comment.postedBy.UserName}{" "}
                       </span>
@@ -275,8 +276,8 @@ const makeComment = (text, id) => {
 
               {/* card content */}
               <div className="home-card-content">
-                <p>{item.likes.length} Likes</p>
-                <p>{item.body}</p>
+                <p style={{color:"black" }}>{item.likes.length} Likes</p>
+                <p style={{color:"black" }}>{item.body}</p>
               </div>
 
               {/* add Comment */}

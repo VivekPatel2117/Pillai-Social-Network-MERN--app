@@ -13,7 +13,7 @@ export default function UserProfie() {
 
   // to follow user
   const followUser = (userId) => {
-    fetch(`http://localhost:5000/follow`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/follow`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +32,7 @@ export default function UserProfie() {
 
   // to unfollow user
   const unfollowUser = (userId) => {
-    fetch(`http://localhost:5000/unfollow`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/unfollow`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",

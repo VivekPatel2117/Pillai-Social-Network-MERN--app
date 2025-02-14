@@ -7,12 +7,6 @@ const USER=mongoose.model("USER");
 const NOTICE =mongoose.model("NOTICE");
 const AWARD=mongoose.model("AWARD");
 const app=express();
-
-
-
-
-
-
 //Route
 router.post("/CreatePost",requiredLogin,(req,res)=>{
     const { body, pic } = req.body;

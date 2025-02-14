@@ -32,7 +32,7 @@ import React, { useEffect,useState} from 'react'
     }, []);
     const fetchPosts = ()=>{
       // Fetching all posts
-      fetch(`http://localhost:5000/myfollwingpost`, {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/myfollwingpost`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },
@@ -53,7 +53,7 @@ import React, { useEffect,useState} from 'react'
     }
   
   const likePost=(id)=>{
-    fetch(`http://localhost:5000/like`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/like`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -77,7 +77,7 @@ import React, { useEffect,useState} from 'react'
       });
   };
   const unlikePost = (id) => {
-    fetch(`http://localhost:5000/unlike`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/unlike`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +111,7 @@ import React, { useEffect,useState} from 'react'
     }
   };
   const makeComment = (text, id) => {
-    fetch(`http://localhost:5000/comment`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/comment`, {
       method: "put",
       headers: {
         "Content-Type": "application/json",

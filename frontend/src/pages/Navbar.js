@@ -137,8 +137,8 @@ return (
       </div>
           
 
-          <div className="search_bar">
-            <input type="text" placeholder="Search" />
+          <div  className="search_bar">
+            {/* <input type="text" placeholder="Search" /> */}
           </div>
 
             {/* <!-- Upload Button--> */}
@@ -166,7 +166,6 @@ return (
           <div className="navbar_content">
               <i className="bi bi-grid"></i>
               <i className='bx bx-sun' id="darkLight"></i>
-              <i className='bx bx-bell'></i>
              <Link to='/Profile'><img src={Profile} alt="" className="profile logo" /></Link> 
           </div>
 </nav>

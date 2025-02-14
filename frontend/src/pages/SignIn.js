@@ -14,7 +14,6 @@ export default function SignIn() {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const navigate = useNavigate()
-  // const { setUserLogin } = useContext(LoginContext)
   const showPass =()=> {
     var x = document.getElementById("password");
     console.log("Clicked");
@@ -106,15 +105,13 @@ export default function SignIn() {
       }
     });
     
-  }, []); // Empty dependency array ensures it runs only once after the initial render
-
+  }, []); 
   return (
     <>
       <body>
         <div className="background-image"></div>
         <div className="login-container">
           <div className="user-icon">
-            {/* <!-- Update the image source with a valid URL or a relative path --> */}
             <img src={Logo} alt="Pillai College Logo" />
           </div>
           <form className='SignIn-form' id="login-SignIn-form">

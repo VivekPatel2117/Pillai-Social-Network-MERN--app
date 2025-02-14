@@ -5,10 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {toast,ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function Admin() {
-  // const form=document.getElementById('registrationForm');
-  // form.addEventListener('submit',(e)=>{
-  //   e.preventDefault();
-  // })
+ 
   const [UserName, setUserName] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");

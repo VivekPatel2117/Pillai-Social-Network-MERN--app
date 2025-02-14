@@ -53,7 +53,7 @@ export default function Student() {
         } else {
           notifyB(data.message)
 
-          navigate("/OtpVerify")
+          navigate("/")
         }
         console.log(data)
       })

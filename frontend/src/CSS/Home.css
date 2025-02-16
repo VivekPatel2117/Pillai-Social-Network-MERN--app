@@ -37,7 +37,7 @@
     /* height: 50%; */
 }
 .home-card-content{
-
+    height: fit-content;
     text-align: left;
     line-height: 10px;
     padding: 3px 10px;

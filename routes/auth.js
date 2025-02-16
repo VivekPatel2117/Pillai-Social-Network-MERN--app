@@ -167,39 +167,42 @@ router.post("/forgotPass", (req, res) => {
                 return res.status(404).json({ error: "User not found" });
             }
 
-            let transporter = nodemailer.createTransport({
-                host: "smtp.gmail.com",
-                port: 465,
-                secure: true,
-                auth: {
-                    user: "vivekp22it@student.mes.ac.in",
-                    pass: "yitb regd hlqn ytaa",
-                     },
-            });
+            // let transporter = nodemailer.createTransport({
+            //     service: "gmail",
+            //     auth: {
+            //         user: "vivekp22it@student.mes.ac.in",
+            //         pass: "yitb regd hlqn ytaa",
+            //          },
+            // });
 
-            transporter.sendMail({
-                from: 'Pillai Reset Password <vivekp22it@student.mes.ac.in>',
-                to: email, // Sending email to the user who requested password reset
-                subject: "Password Reset",
-                html: `
-                    <!DOCTYPE html>
-                    <html lang="en">
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>Password Reset</title>
-                    </head>
-                    <body>
-                        <h2>Password Reset</h2>
-                        <p>If you are trying to reset your password, please click the link below:</p>
-                        <p><a href="http://localhost:5000ResetPass">Reset Password</a></p>
-                    </body>
-                    </html>
-                    `,
-            });
-
-            res.status(200).json({ message: "Email sent successfully" });
-            ResetEmail=email;
+            // transporter.sendMail({
+            //     from: 'Pillai Reset Password <vivekp22it@student.mes.ac.in>',
+            //     to: email, // Sending email to the user who requested password reset
+            //     subject: "Password Reset",
+            //     html: `
+            //         <!DOCTYPE html>
+            //         <html lang="en">
+            //         <head>
+            //             <meta charset="UTF-8">
+            //             <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            //             <title>Password Reset</title>
+            //         </head>
+            //         <body>
+            //             <h2>Password Reset</h2>
+            //             <p>If you are trying to reset your password, please click the link below:</p>
+            //             <p><a href="http://localhost:5000/ResetPass">Reset Password</a></p>
+            //         </body>
+            //         </html>
+            //         `,
+            // },(error, info) => {
+            //     if (error) {
+            //       console.log("Error:", error);
+            //     } else {
+            //       console.log("Email sent:", info.response);
+            //     }
+            //   });
+                res.status(200).json({ message: "Email sent successfully" });
+                ResetEmail=email;
         })
         .catch((error) => {
             console.error(error);

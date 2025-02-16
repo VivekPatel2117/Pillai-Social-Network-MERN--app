@@ -15,7 +15,7 @@ export default function PostDetail({ item,user, toggleDetails }) {
 
   const removePost = (postId) => {
     if (window.confirm("Do you really want to delete this post ?")) {
-      fetch(`/deletePost/${postId}`, {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/deletePost/${postId}`, {
         method: "delete",
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),

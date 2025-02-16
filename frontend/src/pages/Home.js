@@ -33,7 +33,7 @@ return ()=>{
   }, []);
   const fetchPosts = ()=>{
     // Fetching all posts
-    fetch(`/allposts?limit=${limit}&skip=${skip}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/allposts?limit=${limit}&skip=${skip}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

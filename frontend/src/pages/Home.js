@@ -35,8 +35,11 @@ return ()=>{
     // Fetching all posts
     fetch(`${process.env.REACT_APP_BACKEND_URL}/allposts?limit=${limit}&skip=${skip}`, {
       headers: {
+        "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },
+      method: "get",
+
     })
       .then((res) => res.json())
       .then((result) => {

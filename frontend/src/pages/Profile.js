@@ -32,7 +32,7 @@ export default function Profie() {
   }
 
   useEffect(() => {
-    fetch(`/user/${JSON.parse(localStorage.getItem("user"))._id}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${JSON.parse(localStorage.getItem("user"))._id}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

@@ -52,7 +52,7 @@ export default function UserProfie() {
   };
 
   useEffect(() => {
-    fetch(`/user/${userid}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/${userid}`, {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("jwt"),
       },

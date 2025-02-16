@@ -33,7 +33,7 @@ export default function AllAwards() {
     }, []);
     const fetchPosts = ()=>{
       // Fetching all posts
-      fetch('/AwardsAllPosts', {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/AwardsAllPosts`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("jwt"),
         },

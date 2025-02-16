@@ -30,7 +30,7 @@ export default function AllNotice() {
   }
 useEffect(() => {
   // Fetching post
-  fetch('/NoticeAllPosts',{
+  fetch(`${process.env.REACT_APP_BACKEND_URL}/NoticeAllPosts`,{
     headers: {
       "authorization": "Bearer " + token
     },

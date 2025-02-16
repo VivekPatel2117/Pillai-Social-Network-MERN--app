@@ -62,9 +62,7 @@ function App() {
       <Route path='/Forgot' element={<Forgot/>}/>
       <Route path='/ResetPass' element={<ResetPass/>} />
       <Route path="/profile/:userid" element={<UserProfie />}></Route>
-      <Route path="/MyFollowingPost" element={<MyFolliwngPost />}></Route>
-      
-      
+      <Route path="/MyFollowingPost" element={<MyFolliwngPost />}></Route>      
     </Routes>
    </Router>
    </LoginContext.Provider>

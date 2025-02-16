@@ -25,7 +25,10 @@ export default function Forgot() {
           notifyB(data.message);
           navigate('/ResetPass');
         }
-      });
+      }).catch((err)=>{
+        console.log(err);
+        notifyA("Error in Resetting Password")
+      })
   };
 
   const handleSubmit = (e) => {

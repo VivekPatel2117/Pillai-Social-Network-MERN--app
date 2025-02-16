@@ -13,7 +13,7 @@ app.use(express.json())
 app.use(require("./routes/CreatePost"))
 app.use((require("./routes/user")))
 app.use(cors({
-    origin: 'http://localhost:3000'  // Replace with your frontend's URL
+    origin: 'https://pillai-social.onrender.com'
 }));
 
 app.use(require("./routes/auth"))
